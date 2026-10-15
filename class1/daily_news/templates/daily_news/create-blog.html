@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+       {{form}}
+       {% csrf_token %}
+       <button type="submit" style="border-radius: 5px; color: bisque; background: black; padding: 2px;">Submit</button> 
+    </form>
+</body>
+</html>

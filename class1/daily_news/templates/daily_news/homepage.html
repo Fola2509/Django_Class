@@ -1,0 +1,60 @@
+{% extends "daily_news/base.html" %}
+{% block content %}    
+    <!-- Main Container -->
+    <div class="container">
+        <div class="content-grid">
+
+            <!-- Posts Feed with all required properties -->
+            <main class="posts-feed">
+
+                <!-- 1. Headline -->
+                {% for blog in blogs %}
+                        <!-- Blog Article 1 -->
+                <article class="post-card">
+                    <h2>{{blog.headline}}</h2>
+
+                    <!-- 2 & 3. Author & Published At -->
+                    <div class="post-meta">
+                        <span class="author">{{blog.author}}</span>
+                        <span class="dot">•</span>
+                        <time datetime="2026-09-11">{{blog.published_at}}</time>
+                    </div>
+
+                    <!-- 4. Body Excerpt -->
+                    <div class="post-body">
+                        <p>{{blog.body|truncatechars:15}}</p>
+                    </div>
+
+                    <!-- Read More Link -->
+                    <div class="post-footer">
+                        {% comment %} <a href="blog/{{blog.pk}}" class="read-more"> {% endcomment %}
+                        <a href="{% url "read-blog" blog.pk %}" class="read-more">
+
+                            Read Essay <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </article>
+                {% endfor %} 
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="widget about-widget">
+                    <h3 class="widget-title">About</h3>
+                    <p>Lumen is a curated journal exploring intentional design, deep thinking, and modern editorial
+                        aesthetics.</p>
+                </div>
+
+                <div class="widget newsletter-widget">
+                    <h3 class="widget-title">Dispatch</h3>
+                    <p>Subtle thoughts delivered straight to your inbox every fortnight.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+{% endblock %}
